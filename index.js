@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/card_data
 // @grant       none
-// @version     1.1.0
+// @version     1.1.1
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -31,7 +31,7 @@ function filterTable(filter) {
   // Headers are in thead
   const rows = document.querySelectorAll(`table > tbody > tr`)
 
-  const orFilter = filter.split(",").filter(f => f.trim().length > 0).map(f => escape(f.trim())).join("|")
+  const orFilter = filter.split(",").filter(f => f.trim().length > 0).map(f => f.trim()).join("|")
   const regex = new RegExp(`${orFilter}`, 'i')
   const isFoundInTds = td => regex.test(td.innerHTML)
   const isFound = childrenArr => childrenArr.some(isFoundInTds)
