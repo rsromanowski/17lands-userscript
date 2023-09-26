@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/card_data
 // @grant       none
-// @version     1.1.6
+// @version     1.1.7
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -62,7 +62,8 @@ function createQueryInput() {
   div.appendChild(i);
 
   i.addEventListener("input", (event) => { filterTable(event.target.value); });
-
+  
+  // Select all text of focus for quick overwrite
   i.addEventListener("focus", function() { this.select(); });
 }
 
