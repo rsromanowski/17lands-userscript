@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/card_data
 // @grant       none
-// @version     1.1.2
+// @version     1.1.3
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -26,6 +26,9 @@ function filterTable(filter) {
     { name: 'Rarity', index: 2, isFilter: false },
   ]
   const filterColumns = columns.filter(c => c.isFilter).map(c => c.index)
+
+  const rarityRegex = new RegExp('r[:=][curm]','i')
+  const colorRegex = new RegExp('c[:=][wubrgcm]','i')
 
   // Currently only one table on page
   // Headers are in thead
