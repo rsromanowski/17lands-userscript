@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/card_data
 // @grant       none
-// @version     1.1.4
+// @version     1.1.5
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -68,6 +68,9 @@ function createQueryInput() {
 
 VM.observe(document.body, () => {
   const table = document.querySelector('table');
+  const headers = document.querySelector('table th');
+
+  headers.forEach(h => h.addEventListener("click", (e) => console.log(e.target)));
 
   if (table) {
     createQueryInput();
