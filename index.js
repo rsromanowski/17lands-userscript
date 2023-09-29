@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/card_data
 // @grant       none
-// @version     1.1.8
+// @version     1.2.0
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
