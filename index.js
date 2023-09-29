@@ -15,7 +15,7 @@ function prettify() {
   const toolbar = document.querySelector('div > div > select').parentElement.parentElement
   toolbar.style.cssText += " justify-content: space-between"
 
-  const divs = document.querySelectorAll('.app > div > div')
+  const divs = document.querySelectorAll('#app > div > div')
   divs.forEach(d => d.classList.add('container'))
 }
 
