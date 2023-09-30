@@ -3,13 +3,12 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/*
 // @grant       none
-// @version     1.3.1
+// @version     1.3.2
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
 // @require https://cdn.jsdelivr.net/npm/@violentmonkey/dom@2
 // @require https://cdn.jsdelivr.net/npm/@violentmonkey/shortcut@1
-// @require lib.js
 // ==/UserScript==
 
 function prettify() {
@@ -84,11 +83,18 @@ if (window.location.pathname == '/card_data') {
     document.getElementById("q").focus()
   })
 } else if (window.location.pathname == '/card_data/details') {
-  const dropdown = document.getElementById('card')
-  // max: dropdown.childElementCount - 1
-  // a.selectedIndex=69
-  // dispatchEvent(new window.Event('change', { bubbles: true }))
+  const dropdown: HTMLSelectElement = document.getElementById('card')
+
   console.log(`details baby`)
+
+  VM.shortcut.register('k', () => {
+    dropdown.selectedIndex = Math.max(0, dropdown.selectedIndex--)
+    dropdown.dispatchEvent(new window.Event('change', { bubbles: true }))
+  })
+  VM.shortcut.register('j', () => {
+    dropdown.selectedIndex = Math.min(dropdown.childElementCount - 1, dropdown.selectedIndex++)
+    dropdown.dispatchEvent(new window.Event('change', { bubbles: true }))
+  })
 } else {
   console.log(`Nothing to do on page: ${window.location.pathname}`)
 }
