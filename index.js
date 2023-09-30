@@ -99,16 +99,16 @@ function initCardData() {
 function initCardDetails() {
   console.log(`details baby`)
   
-  const dropdown = document.getElementById('card')
-
   VM.shortcut.register('k', () => {
     console.log('k')
-    dropdown.selectedIndex = Math.max(0, dropdown.selectedIndex--)
+    const dropdown = document.getElementById('card')
+    dropdown.selectedIndex = Math.max(0, dropdown.selectedIndex - 1)
     dropdown.dispatchEvent(new window.Event('change', { bubbles: true }))
   })
   VM.shortcut.register('j', () => {
     console.log('j')
-    dropdown.selectedIndex = Math.min(dropdown.childElementCount - 1, dropdown.selectedIndex++)
+    const dropdown = document.getElementById('card')
+    dropdown.selectedIndex = Math.min(dropdown.childElementCount - 1, dropdown.selectedIndex + 1)
     dropdown.dispatchEvent(new window.Event('change', { bubbles: true }))
   })
 }
