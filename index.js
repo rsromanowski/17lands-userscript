@@ -3,7 +3,7 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/*
 // @grant       none
-// @version     1.3.3
+// @version     1.3.4
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -21,13 +21,6 @@ switch(window.location.pathname) {
   default: 
     console.log(`Nothing to do on page: ${window.location.pathname}`)
     break
-}
-if (window.location.pathname == '/card_data') {
-  initCardData()
-} else if (window.location.pathname == '/card_data/details') {
-  initCardDetails()
-} else {
-  console.log(`Nothing to do on page: ${window.location.pathname}`)
 }
 
 function initCardData() {
