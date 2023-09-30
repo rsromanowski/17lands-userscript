@@ -3,12 +3,13 @@
 // @namespace   Violentmonkey Scripts
 // @match       https://www.17lands.com/*
 // @grant       none
-// @version     1.3.0
+// @version     1.3.1
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
 // @require https://cdn.jsdelivr.net/npm/@violentmonkey/dom@2
 // @require https://cdn.jsdelivr.net/npm/@violentmonkey/shortcut@1
+// @require lib.js
 // ==/UserScript==
 
 function prettify() {
