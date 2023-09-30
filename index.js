@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name        Filter 17Lands data
 // @namespace   Violentmonkey Scripts
-// @match       https://www.17lands.com/card_data
+// @match       https://www.17lands.com/*
 // @grant       none
-// @version     1.2.0
+// @version     1.3.0
 // @author      rsromanowski
 // @license     MIT
 // @description Adds a input to quickly filter cards by name. Separate by commas to see multiple cards. Click `/` to quickly focus on input
@@ -67,17 +67,27 @@ function createQueryInput() {
   i.addEventListener("focus", function () { this.select() })
 }
 
-VM.observe(document.body, () => {
-  const table = document.querySelector('table')
+if (window.location.pathname == '/card_data') {
+  VM.observe(document.body, () => {
+    const table = document.querySelector('table')
 
-  if (table) {
-    createQueryInput()
-    prettify()
+    if (table) {
+      createQueryInput()
+      prettify()
 
-    return true // disconnect observer
-  }
-})
+      return true // disconnect observer
+    }
+  })
 
-VM.shortcut.register('/', () => {
-  document.getElementById("q").focus()
-})
+  VM.shortcut.register('/', () => {
+    document.getElementById("q").focus()
+  })
+} else if (window.location.pathname == '/card_data/details') {
+  const dropdown = document.getElementById('card')
+  // max: dropdown.childElementCount - 1
+  // a.selectedIndex=69
+  // dispatchEvent(new window.Event('change', { bubbles: true }))
+  console.log(`details baby`)
+} else {
+  console.log(`Nothing to do on page: ${window.location.pathname}`)
+}
