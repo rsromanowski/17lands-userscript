@@ -83,7 +83,7 @@ if (window.location.pathname == '/card_data') {
     document.getElementById("q").focus()
   })
 } else if (window.location.pathname == '/card_data/details') {
-  const dropdown: HTMLSelectElement = document.getElementById('card')
+  const dropdown = document.getElementById('card')
 
   console.log(`details baby`)
 
